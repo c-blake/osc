@@ -132,8 +132,9 @@ cc -o osc osc.c
 Single file, no dependencies beyond a POSIX.1-2008 + `cfmakeraw` libc (Linux
 glibc, musl, macOS, FreeBSD, OpenBSD, NetBSD).
 
-`osc` also works with `cosmocc` for an actually portable executable (APE) under
-1 MiB in my tests.
+`osc` also works with `cosmocc` for an actually portable executable (APE) about
+350 KiB in my tests (with `cosmocc -Os -mtiny -o osc osc.c`).  A statically
+linked musl-gcc is about 40 KiB.
 <details><summary><strong>Related concepts</strong>
 </summary>
 Terminal escape sequences, terminal emulator control sequences, ANSI SGR escape
