@@ -21,7 +21,7 @@ possible.  It aims to be a rendezvous point enabling safer use of these
 protocols, a canonical/reference tool to deliver trustable, consistent answers
 rather than harder to audit and ad hoc/personal scripting solutions.
 </details>
-<details><summary>How `osc` solves it<strong></strong>
+<details><summary><strong>How `osc` solves it</strong>
 </summary>
 `osc` sends one or more OSC payloads to the terminal via `/dev/tty`, reads back
 replies, strips protocol framing, and writes one reply per query line to stdout.
@@ -47,7 +47,7 @@ osc '4;0;?' '4;1;?' '4;2;?' |
   while read color; do echo $color; done
 ```
 </details>
-<details><summary>Supported protocols (non-exhaustive)<strong></strong>
+<details><summary><strong>Supported protocols (non-exhaustive)</strong>
 </summary>
 This program is intentionally agnostic to details of the OSC request/reply (as
 long as replies do not look like CPRs).  This is to be future proof as terminals
@@ -70,7 +70,7 @@ information: https://wiki.tau.garden/x11-colors/
 (One might also say "past proof" per an old `rxvt` ESC[7n request for `DISPLAY`
 setting in the innocent pre-ssh/DISPLAY-forwarding days of the Internet.)
 </details>
-<details><summary>Signal Handling Details<strong></strong>
+<details><summary><strong>Signal Handling Details</strong>
 </summary>
 Mostly already said, but:
   - SIGHUP, SIGINT, ..: restore terminal & re-raise (shell sees correct $? /
@@ -92,7 +92,7 @@ Mostly already said, but:
 Concurrent `osc` instances against the same terminal produce undefined results,
 but probably failure.  Use flock(1) or similar if shell parallelism is in play.
 </details>
-<details><summary>Sentinel / framing<strong></strong>
+<details><summary><strong>Sentinel / framing</strong>
 </summary>
 CPR (Cursor Position Report, `ESC[6n`) sentinels are sent after each query.
 This serves two purposes:
@@ -105,7 +105,7 @@ This serves two purposes:
 2. Distinguishes terminal answer back from concurrent user keyboard input.  This
    is imperfect, but something is better than nothing.
 </details>
-<details><summary>Why not a shell script?<strong></strong>
+<details><summary><strong>Why not a shell script?</strong>
 </summary>
 All of this, including the CPR termination, *can* be done in shell (with slower
 execution and more propensity to lose races), but for various reasons *generally
@@ -116,7 +116,7 @@ is "sloppy, works for me on my terminal fast enough with nothing weird afoot".
 This compounds the already bad reputation of an intrinsically racy protocol.
 `osc` tries to raise the bar a little.
 </details>
-<details><summary>Why not xtermcontrol?<strong></strong>
+<details><summary><strong>Why not xtermcontrol?</strong>
 </summary>
 `xtermcontrol` covers the xterm-era OSC subset (colors, title, font, geometry)
 but sounds xterm-centric (even if most modern emulators imitate xterm), does not
@@ -134,7 +134,7 @@ glibc, musl, macOS, FreeBSD, OpenBSD, NetBSD).
 
 `osc` also works with `cosmocc` for an actually portable executable (APE) under
 1 MiB in my tests.
-<details><summary>Related concepts<strong></strong>
+<details><summary><strong>Related concepts</strong>
 </summary>
 Terminal escape sequences, terminal emulator control sequences, ANSI SGR escape
 codes, xterm control sequences, OSC sequences, Operating System Commands,
@@ -146,7 +146,7 @@ signal handling, signal safety, ctlseqs, XTerm Control Sequences, invisible
 character framing, VT100 VT220 xterm st kitty foot ghostty iTerm2 WezTerm
 alacritty Konsole GNOME Terminal color scheme detection
 </details>
-<details><summary>Appendix: Parsing Colors<strong></strong>
+<details><summary><strong>Appendix: Parsing Colors</strong>
 </summary>
 Users of this utility may also find this code handy.  You might pipe `osc
 '4;0;?' '4;1;?' '4;2;?' '4;3;?' ..` to `gawk`:
