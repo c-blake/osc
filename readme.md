@@ -124,7 +124,7 @@ support general payload passthrough, and has limited timeout configurability for
 high-latency links.
 </details>
 
-# Build
+# Build / Install
 
 ```sh
 cc -o osc osc.c
@@ -135,7 +135,8 @@ glibc, musl, macOS, FreeBSD, OpenBSD, NetBSD).
 [`osc` also works with `cosmocc` for an actually portable executable (APE) about
 350 KiB in my tests](https://github.com/c-blake/osc/releases/download/1.0/osc) (
 with `cosmocc -Os -mtiny -o osc osc.c`).  A statically linked Linux musl-gcc is
-about 40 KiB.
+about 40 KiB.  So, you could also just download / make such a binary once (not
+forgetting to `chmod`) and then scp it around.
 <details><summary><strong>Related concepts</strong>
 </summary>
 Terminal escape sequences, terminal emulator control sequences, ANSI SGR escape
@@ -152,10 +153,10 @@ alacritty Konsole GNOME Terminal color scheme detection
 </summary>
 Users of this utility may also find this code handy.  You might pipe `osc
 '4;0;?' '4;1;?' '4;2;?' '4;3;?' ..` to `gawk`:
-```awk
+```gawk
 BEGIN { FS = ";" } {    # Targeted at the 4;<idx>;? form only
   idx = $2
-  rgb = $3              # $3 is "rgb:hhhh/hhhh/hhhh"
+  rgb = $3              # 3 is "rgb:hhhh/hhhh/hhhh"
   sub(/^rgb:/, "", rgb)
   split(rgb, chans, "/")
   r = strtonum("0x" chans[1]) / 65535   # gawk only
