@@ -155,10 +155,9 @@ Users of this utility may also find this code handy.  You might pipe `osc
 '4;0;?' '4;1;?' '4;2;?' '4;3;?' ..` to `gawk`:
 ```gawk
 BEGIN { FS = ";" } {    # Targeted at the 4;<idx>;? form only
-  idx = $2
-  rgb = $3              # 3 is "rgb:hhhh/hhhh/hhhh"
+  idx = $2; rgb = $3
   sub(/^rgb:/, "", rgb)
-  split(rgb, chans, "/")
+  split(rgb, chans, "/")    # 3 is "rgb:hhhh/hhhh/hhhh"
   r = strtonum("0x" chans[1]) / 65535   # gawk only
   g = strtonum("0x" chans[2]) / 65535
   b = strtonum("0x" chans[3]) / 65535
