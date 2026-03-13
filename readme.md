@@ -149,7 +149,7 @@ signal handling, signal safety, ctlseqs, XTerm Control Sequences, invisible
 character framing, VT100 VT220 xterm st kitty foot ghostty iTerm2 WezTerm
 alacritty Konsole GNOME Terminal color scheme detection
 </details>
-<details><summary><strong>Appendix: Parsing Colors</strong>
+<details><summary><strong>Appendix1: Parsing Colors</strong>
 </summary>
 Users of this utility may also find this code handy.  You might pipe `osc
 '4;0;?' '4;1;?' '4;2;?' '4;3;?' ..` to `gawk`:
@@ -176,4 +176,17 @@ parseColor () {  # Zsh color parser - strip "4;1;rbg:" before this call!
 }
 # E.g.Use: a=${rec#4;}; eval `parseColor ${a#*;}`; echo ${a%%;*} $r $g $b
 </code></pre>
+</details>
+<details><summary><strong>Appendix2: Tested On</strong>
+</summary>
+Tested On (both local & over ssh w/100 ms underlying network RTT):
+ - Linux Virtual Console (timeout)
+ - xterm-407
+ - st-0.9.3
+ - termux-2026-02-11
+ - alacritty-0.16
+ - kitty-0.45
+ - ghostty-1.2.3
+but it probably also works on both newer and older versions of these programs
+and also probably works on many non-listed.
 </details>
