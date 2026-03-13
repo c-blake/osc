@@ -153,7 +153,7 @@ alacritty Konsole GNOME Terminal color scheme detection
 </summary>
 Users of this utility may also find this code handy.  You might pipe `osc
 '4;0;?' '4;1;?' '4;2;?' '4;3;?' ..` to `gawk`:
-```gawk
+<pre><code>
 BEGIN { FS = ";" } {
   idx = $2; rgb = $3
   sub(/^rgb:/, "", rgb)
@@ -163,11 +163,11 @@ BEGIN { FS = ";" } {
   b = strtonum("0x" chans[3]) / 65535
   printf "%s %.5f %.5f %.5f\n", idx, r, g, b
 }
-```
+</code></pre>
 That is targeted at the 4;<idx>;? form only, with `$3` "rgb:hhhh/hhhh/hhhh" and
 `strtonum` is gawk-specific.  You could be slightly more general (any number of
 hex digits) like this Zsh:
-```zsh
+<pre><code>
 parseColor () {  # Zsh color parser - strip "4;1;rbg:" before this call!
   local cs=("${(@s:/:)1}") 
   local digits=${#cs[1]} 
@@ -175,5 +175,5 @@ parseColor () {  # Zsh color parser - strip "4;1;rbg:" before this call!
   printf "r=$((16#${cs[1]}/mx)); g=$((16#${cs[2]}/mx)); b=$((16#${cs[3]}/mx))"
 }
 # E.g.Use: a=${rec#4;}; eval `parseColor ${a#*;}`; echo ${a%%;*} $r $g $b
-```
+</code></pre>
 </details>
