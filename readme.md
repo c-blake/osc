@@ -180,13 +180,16 @@ parseColor () {  # Zsh color parser - strip "4;1;rbg:" before this call!
 <details><summary><strong>Appendix2: Tested On</strong>
 </summary>
 Tested On (both local & over ssh w/100 ms underlying network RTT):
- - Linux Virtual Console (timeout)
  - xterm-407
  - st-0.9.3
  - termux-2026-02-11
  - alacritty-0.16
  - kitty-0.45
  - ghostty-1.2.3
+ - MSYS2 Windows 10 (works)
+ - Linux Virtual Console (timeout)
+ - FreeBSD Virtual Console (timeout)
+ - Command Prompt Windows 10 (fast fail)
 but it probably also works on both newer and older versions of these programs
 and also probably works on many non-listed.
 </details>
