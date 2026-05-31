@@ -190,6 +190,7 @@ Tested On (both local & over ssh w/100 ms underlying network RTT):
  - Linux Virtual Console (timeout)
  - FreeBSD Virtual Console (timeout)
  - Command Prompt Windows 10 (fast fail)
+ - OSX Terminal.app (fast fail; \e[49;1R garbage into prompt)
 but it probably also works on both newer and older versions of these programs
 and also probably works on many non-listed.
 </details>
